@@ -34,7 +34,7 @@ export default function TabRouter() {
             <Tab.Screen
                 name="Home"
                 component={Home}
-                options={{ title: 'Login Screen'}}
+                options={{ title: 'Home Screen'}}
             />
 
             <Tab.Screen
