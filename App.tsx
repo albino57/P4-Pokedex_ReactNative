@@ -1,19 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import TabRouter from './src/routes/TabRouter';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Pokedex React Native</Text>
-    </View>
+    <NavigationContainer>
+      <TabRouter />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
