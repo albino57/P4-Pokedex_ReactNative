@@ -1,13 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Login from "../screens/Login/Login";
 import Home from '../screens/Home/Home';
 import Pokedex from "../screens/Pokedex/Pokedex";
 import PokemonCreator from "../screens/PokemonCreator/PokemonCreator";
 
 //---↓ Tipos de Rotas ↓---//
 export type TabParamList = {
-    Login: undefined;
     Home: undefined;
     Pokedex: undefined;
     PokemonCreator: undefined;
@@ -25,12 +23,6 @@ export default function TabRouter() {
             tabBarInactiveTintColor: 'gray',
         }}
         >
-            <Tab.Screen
-                name="Login"
-                component={Login}
-                options={{ title: 'Login Screen'}}
-            />
-
             <Tab.Screen
                 name="Home"
                 component={Home}
