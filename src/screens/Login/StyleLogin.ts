@@ -1,5 +1,6 @@
 //src/screens/Login/StyleLogin.ts
 import { StyleSheet } from "react-native";
+import { theme } from '../../StyleGlobal';
 
 export const style = StyleSheet.create({
     container: {
@@ -13,5 +14,9 @@ export const style = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: 'bold',
+    },
+
+    button: {
+        backgroundColor: theme.colors.secondary,
     },
 });
