@@ -5,15 +5,19 @@ import React, { useState, useEffect } from "react";
 import { PokemonData } from '../../contexts/PokedexContext';
 import PokeApi from '../../services/PokeAPI/PokeAPI';
 import { PokemonCard } from "../../components/CardBase/PokemonCard";
+import { ActivityIndicator } from "react-native";
 
 export default function Home() {
     const[lista, setLista]  = useState<PokemonData[]>([]);
     const[offset, setOffset] = useState<number>(0);
     const[loading, setLoading]  = useState<boolean>(false);
     const fetchPokemons = async () => { 
-        const resposta = await PokeApi.get(`/pokemon?limit=20&offset=${offset}`);
-        const pokemonList = resposta.data.results;
-        const detalhes = await Promise.all(
+
+        try {
+            setLoading(true);
+            const resposta = await PokeApi.get(`/pokemon?limit=20&offset=${offset}`);
+            const pokemonList = resposta.data.results;
+            const detalhes = await Promise.all(
             pokemonList.map(async (item: { name: string; url: string }) => {
                 const res = await PokeApi.get(item.url);
                     return {
@@ -24,7 +28,12 @@ export default function Home() {
             })
         );
          setLista([...lista, ...detalhes]);
+    } catch (error) {
+        console.log("Erro ao carregar pokemons:", error);
+    } finally {
+        setLoading(false);
     }
+}
 
     const loadMore = async () => {
         setOffset(offset+20);
@@ -36,6 +45,12 @@ export default function Home() {
 
     return (
         <View style={style.container}>
+            {loading && lista.length === 0 ? (
+                <View>
+                    <ActivityIndicator size="large"/>
+                    <Text>Aguarde, carregando lista de pokemons...</Text>
+                </View>
+            ) : (
            <FlatList
              data={lista}
              keyExtractor={(item) => item.id.toString()}
@@ -44,7 +59,7 @@ export default function Home() {
              <PokemonCard pokemon={item} />
             )}
            />
-
+        )}
         </View>
     );
 }
