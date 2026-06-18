@@ -14,14 +14,14 @@ export default function Home() {
         const resposta = await PokeApi.get(`/pokemon?limit=20&offset=${offset}`);
         const pokemonList = resposta.data.results;
         const detalhes = await Promise.all(
-         pokemonList.map(async (item: { name: string; url: string }) => {
-        const res = await PokeApi.get(item.url);
-            return {
-                id:  res.data.id,
-                name: res.data.name,
-                tipo: res.data.types[0].type.name
-            }
-        })
+            pokemonList.map(async (item: { name: string; url: string }) => {
+                const res = await PokeApi.get(item.url);
+                    return {
+                       id:  res.data.id,
+                       name: res.data.name,
+                       tipo: res.data.types[0].type.name
+                    }
+            })
         );
          setLista([...lista, ...detalhes]);
     }
