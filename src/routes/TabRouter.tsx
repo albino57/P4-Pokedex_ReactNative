@@ -3,12 +3,14 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from '../screens/Home/Home';
 import Pokedex from "../screens/Pokedex/Pokedex";
 import PokemonCreator from "../screens/PokemonCreator/PokemonCreator";
+import Contato from "../screens/Contato/Contato";
 
 //---↓ Tipos de Rotas ↓---//
 export type TabParamList = {
     Home: undefined;
     Pokedex: undefined;
     PokemonCreator: undefined;
+    Contato: undefined;
 }
 //---↑ Tipos de Rotas ↑---//
 
@@ -39,6 +41,12 @@ export default function TabRouter() {
                 name="PokemonCreator"
                 component={PokemonCreator}
                 options={{ title: 'Criador de Pokemon'}}
+            />
+
+            <Tab.Screen
+                name="Contato"
+                component={Contato}
+                options={{ title: 'Contato'}}
             />
         </Tab.Navigator>
     );
