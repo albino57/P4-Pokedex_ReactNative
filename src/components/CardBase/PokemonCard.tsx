@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { usePokedex } from '../../contexts/PokedexContext';
+import { useState } from 'react';
 
 export interface PokemonData {
     id: number;
@@ -15,16 +16,29 @@ interface PokemonCardProps {
 export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
     const { backpack, catchPokemon, releasePokemon } = usePokedex();
 
-    // Verifica se o pokémon já está na mochila
     const isCaught = backpack.some((p) => p.id === pokemon.id);
 
     const handlePress = async () => {
         if (isCaught) {
             await releasePokemon(pokemon.id);
         } else {
-            await catchPokemon(pokemon);
+            handleCapturar();
         }
     };
+
+    const [status, setStatus] = useState('idle');
+    function handleCapturar() {
+    setStatus('capturando');
+
+    setTimeout(() => {
+        catchPokemon(pokemon);
+        setStatus('capturado');
+    }, 1500);
+
+    setTimeout(() => {
+        setStatus('idle');
+    }, 3000);
+}
 
     return (
         <View style={styles.card}>
@@ -34,6 +48,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
                 <Text style={styles.pokemonType}>Tipo: {pokemon.tipo}</Text>
             </View>
 
+            {status === 'idle' && (
             <TouchableOpacity 
                 style={[styles.button, isCaught ? styles.releaseButton : styles.catchButton]} 
                 onPress={handlePress}
@@ -42,6 +57,9 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
                     {isCaught ? 'Soltar' : 'Capturar'}
                 </Text>
             </TouchableOpacity>
+            )}
+            {status === 'capturando' && <Text>Capturando...</Text>}
+            {status === 'capturado' && <Text>Capturado!</Text>}
         </View>
     );
 };
