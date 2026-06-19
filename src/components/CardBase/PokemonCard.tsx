@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Image , ImageBackground} from 'react-native';
+import { Text, View, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { usePokedex } from '../../contexts/PokedexContext';
 import { useState } from 'react';
 import { styles } from './styleCardsBase'
@@ -44,15 +44,15 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
             setStatus('idle');
         }, 3000);
     }
-    
+
     const backgroundType = typesBackground[pokemon.tipo as keyof typeof typesBackground] || typesBackground.normal;
-   
+
     return (
-       <ImageBackground 
-            source={backgroundType} 
+        <ImageBackground
+            source={backgroundType}
             style={styles.card}
             resizeMode="cover"
-            imageStyle={{ borderRadius: 15 , borderColor: 'gold', borderWidth:1.8 }}>
+            imageStyle={{ borderRadius: 15, borderColor: 'gold', borderWidth: 1.8 }}>
             <View style={styles.cardImg}>
                 <Image
                     source={{
@@ -62,46 +62,46 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
                     style={styles.pokemonImg}
                 />
             </View>
-            <View style = {styles.infoContainer}>
-                 <View style = {styles.txtID}>
-                    <Text style={styles.pokemonId}>ID: #{pokemon.id}</Text>
-                 </View>
-                   <View style={styles.infoContainer}>
 
+            <View style={styles.infoContainer}>
+
+                <View style={styles.infoContainer2}>
                     <Text style={styles.pokemonName}>{pokemon.name}</Text>
-
+                  
+                        <Text style={styles.pokemonId}>ID: #{pokemon.id}</Text>
+                    
                 </View>
-                 <View style = {styles.tipoContainer}>
-                       <Text style = {styles.txtTipo}>
-                    Tipo:
-                  </Text>
-             <View style={[styles.typesColors, {
+                <View style={styles.tipoContainer}>
+                    <Text style={styles.txtTipo}>
+                        Tipo:
+                    </Text>
+                    <View style={[styles.typesColors, {
                         backgroundColor: typeColors[pokemon.tipo as keyof typeof typeColors]
-                    }]}>         
+                    }]}>
                         <Text style={styles.pokemonType}>{pokemon.tipo}</Text>
                     </View>
-                 </View>
-                 
+                </View>
 
-                    <View style={styles.buttonContainer}>
 
-                        {status === 'idle' && (
-                            <TouchableOpacity
-                                style={[styles.button, isCaught ? styles.releaseButton : styles.catchButton]}
-                                onPress={handlePress}
-                            >
-                                <Text style={styles.buttonText}>
-                                    {isCaught ? 'Soltar' : 'Capturar'}
-                                </Text>
-                            </TouchableOpacity>
-                        )}
-                        {status === 'capturando' && <Text>Capturando...</Text>}
-                        {status === 'capturado' && <Text>Capturado!</Text>}
+                <View style={styles.buttonContainer}>
 
-                    </View>
+                    {status === 'idle' && (
+                        <TouchableOpacity
+                            style={[styles.button, isCaught ? styles.releaseButton : styles.catchButton]}
+                            onPress={handlePress}
+                        >
+                            <Text style={styles.buttonText}>
+                                {isCaught ? 'Soltar' : 'Capturar'}
+                            </Text>
+                        </TouchableOpacity>
+                    )}
+                    {status === 'capturando' && <Text>Capturando...</Text>}
+                    {status === 'capturado' && <Text>Capturado!</Text>}
+
+                </View>
 
             </View>
-             
+
         </ImageBackground>
     );
 };

@@ -4,9 +4,10 @@ export const styles = StyleSheet.create({
     card: {
         backgroundColor: '#FFF',
         padding: 16,
-        height: 250,
-        width: 300,
+        height: 160,
+        width: 305,
         gap: 30,
+        flex:1,
         marginVertical: 8,
         marginHorizontal: 16,
         borderRadius: 15,
@@ -35,42 +36,47 @@ export const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: 'column',
         gap: 10,
-    },txtTipo:{
+    },infoContainer2:{
+        flexDirection: 'row',
+        gap:10,
+    },
+    txtTipo:{
          fontWeight: 'bold',
           color: '#ffffff',
     },
     pokemonId: {
-        fontSize: 12,
+        fontSize: 10,
         color: 'gold',
         fontWeight: 'bold',
+        marginRight:5,
        
     },txtID:{
         justifyContent:'space-between',
         marginLeft: 50,
-        marginBottom:20,
+        marginBottom:10,
     },
     pokemonName: {
         fontSize: 18,
         fontWeight: 'bold',
          color: '#ffffff',
         textTransform: 'capitalize',
-        marginTop: 10,
+       
     },
     pokemonType: {
-        fontSize: 13,
+        fontSize: 10,
         fontWeight:'bold',
         color: '#ffffff',
         textTransform: 'capitalize',
         textAlign:'center',
       
-    },
+    }, 
     typesColors: {
         textAlign: 'center',
         alignItems: 'center',
         paddingVertical: 6,
         borderRadius: 20,
         width: 60,
-        height: 30,
+        height: 25,
     },tipoContainer:{
         flexDirection:'row',
         justifyContent:'center',
@@ -78,27 +84,32 @@ export const styles = StyleSheet.create({
         gap:5,
     },
     buttonContainer: {
-       marginTop:25,
-       marginLeft:10,
+       marginTop:10,
+       marginLeft:30,
+       marginBottom:30,
     },
     button: {
         paddingVertical: 8,
         paddingHorizontal: 16,
         borderRadius: 20,
-        width: 100,
-        height: 45,
+        width: 85,
+        height: 35,
+          borderColor:'#000000ce',
+          borderWidth:1.8
     },
     catchButton: {
-        backgroundColor: '#3B4CCA',
+        backgroundColor: '#f3f709',
+        
     },
     releaseButton: {
         backgroundColor: '#CC0000',
     },
     buttonText: {
-        color: '#FFF',
+        color: '#000000c4',
         fontWeight: 'bold',
-        fontSize: 17,
+        fontSize: 12,
         textAlign: 'center',
-        marginTop: 3
+        
+      
     },
 });
