@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
         padding: 16,
         height: 160,
         width: 305,
-        gap: 30,
+        gap: 20,
         flex:1,
         marginVertical: 8,
         marginHorizontal: 16,
@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     },infoContainer2:{
         flexDirection: 'row',
         gap:10,
+        marginTop:30,
     },
     txtTipo:{
          fontWeight: 'bold',
@@ -48,7 +49,7 @@ export const styles = StyleSheet.create({
         fontSize: 10,
         color: 'gold',
         fontWeight: 'bold',
-        marginRight:5,
+       
        
     },txtID:{
         justifyContent:'space-between',
@@ -84,7 +85,7 @@ export const styles = StyleSheet.create({
         gap:5,
     },
     buttonContainer: {
-       marginTop:10,
+       marginTop:20,
        marginLeft:30,
        marginBottom:30,
     },
