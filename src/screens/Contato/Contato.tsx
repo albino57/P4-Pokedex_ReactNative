@@ -9,6 +9,7 @@ import fotoMario from "../../../assets/foto-mario.jpeg"
 import fotoPaulo from "../../../assets/foto-paulo.jpeg"
 import fotoRafael from "../../../assets/foto-rafael.jpeg"
 import fotoSilva from "../../../assets/foto-silva.jpg"
+import DefaultLayout from "../../layouts/DefaultLayout"; 
 
 export default function Contato() {
 
@@ -64,21 +65,22 @@ export default function Contato() {
     ];
 
     return(
-        <ScrollView style={styles.container}>
-            <Text style={styles.titulo}>
-                Nosso Esquadrão Pokémon
-            </Text>
-            <View style={styles.cards}>
-                {
-                    integrantes.map((integrante)=>(
-                        <MemberCard
-                            key={integrante.nome}
-                            integrante={integrante}
-                        />
-                    ))
-                }
-            </View>
-        </ScrollView>
-
+        <DefaultLayout>
+            <ScrollView style={styles.container}>
+                <Text style={styles.titulo}>
+                    Nosso Esquadrão Pokémon
+                </Text>
+                <View style={styles.cards}>
+                    {
+                        integrantes.map((integrante)=>(
+                            <MemberCard
+                                key={integrante.nome}
+                                integrante={integrante}
+                            />
+                        ))
+                    }
+                </View>
+            </ScrollView>
+        </DefaultLayout>
 )
 }

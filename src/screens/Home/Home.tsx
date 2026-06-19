@@ -6,6 +6,7 @@ import { PokemonData } from '../../contexts/PokedexContext';
 import PokeApi from '../../services/PokeAPI/PokeAPI';
 import { PokemonCard } from "../../components/CardBase/PokemonCard";
 import { ActivityIndicator } from "react-native";
+import DefaultLayout from "../../layouts/DefaultLayout";
 
 export default function Home() {
     const[lista, setLista]  = useState<PokemonData[]>([]);
@@ -44,22 +45,24 @@ export default function Home() {
     }, [offset]);
 
     return (
-        <View style={style.container}>
-            {loading && lista.length === 0 ? (
-                <View>
-                    <ActivityIndicator size="large"/>
-                    <Text>Aguarde, carregando lista de pokemons...</Text>
-                </View>
-            ) : (
-           <FlatList
-             data={lista}
-             keyExtractor={(item) => item.id.toString()}
-             onEndReached={loadMore}
-             renderItem={({ item }) => (
-             <PokemonCard pokemon={item} />
+        <DefaultLayout>
+            <View style={style.container}>
+                {loading && lista.length === 0 ? (
+                    <View>
+                        <ActivityIndicator size="large"/>
+                        <Text>Aguarde, carregando lista de pokemons...</Text>
+                    </View>
+                ) : (
+               <FlatList
+                 data={lista}
+                 keyExtractor={(item) => item.id.toString()}
+                 onEndReached={loadMore}
+                 renderItem={({ item }) => (
+                 <PokemonCard pokemon={item} />
+                )}
+               />
             )}
-           />
-        )}
-        </View>
+            </View>
+        </DefaultLayout>
     );
 }
