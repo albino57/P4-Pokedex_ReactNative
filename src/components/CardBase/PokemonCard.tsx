@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { usePokedex } from '../../contexts/PokedexContext';
 import { useState } from 'react';
 import { styles } from './styleCardsBase'
+import { typeColors } from '../../utils/typeColors';
 
 export interface PokemonData {
     id: number;
@@ -44,7 +45,9 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
 
     return (
         <View style={styles.card}>
+             
             <View style={styles.cardImg}>
+                <Text style={styles.pokemonId}>#{pokemon.id}</Text>
                 <Image
                     source={{
                         uri:
@@ -52,35 +55,45 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
                     }}
                     style={styles.pokemonImg}
                 />
+                 <View style={styles.infoContainer}>
+               
+                <Text style={styles.pokemonName}>{pokemon.name}</Text>
+
+                <View style = {[styles.typesColors,{
+                    backgroundColor:typeColors[pokemon.tipo as keyof typeof typeColors]
+                }]}>
+
+                   <Text style={styles.pokemonType}>{pokemon.tipo}</Text>
+                </View>
+
+
+                <View style={styles.buttonContainer}>
+
+                         {status === 'idle' && (
+                    <TouchableOpacity
+                        style={[styles.button, isCaught ? styles.releaseButton : styles.catchButton]}
+                        onPress={handlePress}
+                    >
+                        <Text style={styles.buttonText}>
+                            {isCaught ? 'Soltar' : 'Capturar'}
+                        </Text>
+                    </TouchableOpacity>
+                )}
+                {status === 'capturando' && <Text>Capturando...</Text>}
+                {status === 'capturado' && <Text>Capturado!</Text>}
+
+                </View>
+                
+
+
 
             </View>
-
-            <View style={styles.infoContainer}>
-                <Text style={styles.pokemonId}>#{pokemon.id}</Text>
-                <Text style={styles.pokemonName}>{pokemon.name}</Text>
-                <Text style={styles.pokemonType}>Tipo: {pokemon.tipo}</Text>
-
-
-
-                 {status === 'idle' && (
-                <TouchableOpacity
-                    style={[styles.button, isCaught ? styles.releaseButton : styles.catchButton]}
-                    onPress={handlePress}
-                >
-                    <Text style={styles.buttonText}>
-                        {isCaught ? 'Soltar' : 'Capturar'}
-                    </Text>
-                </TouchableOpacity>
-            )}
-            {status === 'capturando' && <Text>Capturando...</Text>}
-            {status === 'capturado' && <Text>Capturado!</Text>}
-
-
 
 
             </View>
 
            
+
         </View>
     );
 };

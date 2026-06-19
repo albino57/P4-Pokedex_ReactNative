@@ -4,10 +4,12 @@ export const styles = StyleSheet.create({
     card: {
         backgroundColor: '#FFF',
         padding: 16,
-        height : 200,
+        height: 350,
+        width: 250,
+        gap: 10,
         marginVertical: 8,
         marginHorizontal: 16,
-        borderRadius: 20,
+        borderRadius: 8,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -17,21 +19,21 @@ export const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 2,
     },
-    cardImg:{
-         justifyContent: 'center',
-         alignItems: 'center',
-         width: 120,
-         height:120,
+    cardImg: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 120,
+        height: 120,
     },
-    pokemonImg:{
-        width:'100%',
-        height: '100%',
-         resizeMode: 'contain',
+    pokemonImg: {
+        width: 150,
+        height: 150,
+        resizeMode: 'contain',
     },
     infoContainer: {
         flexDirection: 'column',
-        gap: 20,
-        marginLeft:20,
+        gap: 10,
+
     },
     pokemonId: {
         fontSize: 12,
@@ -43,16 +45,34 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#333',
         textTransform: 'capitalize',
+        marginTop: 10,
     },
     pokemonType: {
         fontSize: 14,
-        color: '#888',
+        color: '#ffffff',
         marginTop: 4,
+        textTransform: 'capitalize',
+        textAlign:'center',
+        marginBottom:3,
+    },
+    typesColors: {
+        textAlign: 'center',
+        alignItems: 'center',
+        paddingVertical: 6,
+        borderRadius: 20,
+        width: 60,
+
+    },
+    buttonContainer: {
+
     },
     button: {
         paddingVertical: 8,
         paddingHorizontal: 16,
         borderRadius: 6,
+        width: 80,
+        height: 40,
+
     },
     catchButton: {
         backgroundColor: '#3B4CCA',
@@ -63,6 +83,8 @@ export const styles = StyleSheet.create({
     buttonText: {
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: 12,
+        textAlign: 'center',
+        marginTop: 5
     },
 });

@@ -2,7 +2,7 @@
 import React from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 import { theme } from '../StyleGlobal';
-import background from '../../assets/background.png'
+import background1 from '../../assets/background1.jpg'
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ interface Props {
 
 export default function DefaultLayout({ children }: Props) {
   return (
-    <ImageBackground source={background} style={styles.container} resizeMode="cover">
+    <ImageBackground source={background1} style={styles.container} resizeMode="cover">
       {children}
     </ImageBackground>
   );
