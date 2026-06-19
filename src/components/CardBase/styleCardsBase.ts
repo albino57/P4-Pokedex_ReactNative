@@ -4,12 +4,13 @@ export const styles = StyleSheet.create({
     card: {
         backgroundColor: '#FFF',
         padding: 16,
-        height: 350,
-        width: 250,
-        gap: 10,
+        height: 250,
+        width: 300,
+        gap: 30,
         marginVertical: 8,
         marginHorizontal: 16,
-        borderRadius: 8,
+        borderRadius: 15,
+         borderStyle:'dotted',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -24,6 +25,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         width: 120,
         height: 120,
+        marginLeft:8,
     },
     pokemonImg: {
         width: 150,
@@ -33,27 +35,34 @@ export const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: 'column',
         gap: 10,
-
+    },txtTipo:{
+         fontWeight: 'bold',
+          color: '#ffffff',
     },
     pokemonId: {
         fontSize: 12,
-        color: '#666',
+        color: 'gold',
         fontWeight: 'bold',
+       
+    },txtID:{
+        justifyContent:'space-between',
+        marginLeft: 50,
+        marginBottom:20,
     },
     pokemonName: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#333',
+         color: '#ffffff',
         textTransform: 'capitalize',
         marginTop: 10,
     },
     pokemonType: {
-        fontSize: 14,
+        fontSize: 13,
+        fontWeight:'bold',
         color: '#ffffff',
-        marginTop: 4,
         textTransform: 'capitalize',
         textAlign:'center',
-        marginBottom:3,
+      
     },
     typesColors: {
         textAlign: 'center',
@@ -61,18 +70,23 @@ export const styles = StyleSheet.create({
         paddingVertical: 6,
         borderRadius: 20,
         width: 60,
-
+        height: 30,
+    },tipoContainer:{
+        flexDirection:'row',
+        justifyContent:'center',
+        alignItems:'center',
+        gap:5,
     },
     buttonContainer: {
-
+       marginTop:25,
+       marginLeft:10,
     },
     button: {
         paddingVertical: 8,
         paddingHorizontal: 16,
-        borderRadius: 6,
-        width: 80,
-        height: 40,
-
+        borderRadius: 20,
+        width: 100,
+        height: 45,
     },
     catchButton: {
         backgroundColor: '#3B4CCA',
@@ -83,8 +97,8 @@ export const styles = StyleSheet.create({
     buttonText: {
         color: '#FFF',
         fontWeight: 'bold',
-        fontSize: 12,
+        fontSize: 17,
         textAlign: 'center',
-        marginTop: 5
+        marginTop: 3
     },
 });
