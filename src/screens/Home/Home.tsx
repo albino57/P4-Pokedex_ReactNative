@@ -1,5 +1,5 @@
 //src/screens/Home/Home.tsx
-import { Text, View, FlatList } from "react-native";
+import { Text, View, FlatList, TextInput, TouchableOpacity, Image } from "react-native";
 import { style } from './StyleHome';
 import React, { useState, useEffect } from "react";
 import { PokemonData } from '../../contexts/PokedexContext';
@@ -7,6 +7,7 @@ import PokeApi from '../../services/PokeAPI/PokeAPI';
 import { PokemonCard } from "../../components/CardBase/PokemonCard";
 import { ActivityIndicator } from "react-native";
 import DefaultLayout from "../../layouts/DefaultLayout";
+import homeIcon from '../../../assets/homeIcon.png'
 
 export default function Home() {
     const [lista, setLista] = useState<PokemonData[]>([]);
@@ -53,6 +54,20 @@ export default function Home() {
 
     return (
         <DefaultLayout>
+            <View style={style.inputContainer}>
+               
+                    <TextInput style={style.input} placeholder="Buscar Pokémon">
+                    </TextInput>
+                
+                    <View style={style.buttonInputContainer}>
+                    <TouchableOpacity style={style.buttonInput}>
+                        <Image source={homeIcon} style={style.buttonInput}>
+                        </Image>
+                    </TouchableOpacity>
+                </View>
+                
+
+            </View>
             <View style={style.container}>
                 {loading && lista.length === 0 ? (
                     <View>
