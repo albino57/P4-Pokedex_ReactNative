@@ -7,7 +7,7 @@ import PokeApi from '../../services/PokeAPI/PokeAPI';
 import { PokemonCard } from "../../components/CardBase/PokemonCard";
 import { ActivityIndicator } from "react-native";
 import DefaultLayout from "../../layouts/DefaultLayout";
-import homeIcon from '../../../assets/homeIcon.png'
+import pokeball from '../../../assets/pokeball.png'
 
 export default function Home() {
     const [lista, setLista] = useState<PokemonData[]>([]);
@@ -61,7 +61,7 @@ export default function Home() {
                 
                     <View style={style.buttonInputContainer}>
                     <TouchableOpacity style={style.buttonInput}>
-                        <Image source={homeIcon} style={style.buttonInput}>
+                        <Image source={pokeball} style={style.buttonInput}>
                         </Image>
                     </TouchableOpacity>
                 </View>

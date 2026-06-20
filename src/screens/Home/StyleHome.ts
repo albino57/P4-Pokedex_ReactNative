@@ -13,7 +13,7 @@ export const style = StyleSheet.create({
         fontWeight: 'bold'
     },
     inputContainer:{
-      backgroundColor:'#ffa927',
+      backgroundColor:'#3b3b3a',
       justifyContent:'center',
       alignItems:'center',
        height: 55,
@@ -24,9 +24,9 @@ export const style = StyleSheet.create({
        height:40,
        backgroundColor:'white',
        borderRadius:20,
-    
-       
-    },buttonInput:{
+       paddingLeft:20,
+    },
+    buttonInput:{
         width:40,
         height:40,
         
