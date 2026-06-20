@@ -36,7 +36,8 @@ export const styles = StyleSheet.create({
     infoContainer: {
         flexDirection: 'column',
         gap: 10,
-    },infoContainer2:{
+    },
+    infoContainer2:{
         flexDirection: 'row',
         gap:10,
         marginTop:30,
@@ -49,9 +50,8 @@ export const styles = StyleSheet.create({
         fontSize: 10,
         color: 'gold',
         fontWeight: 'bold',
-       
-       
-    },txtID:{
+    },
+    txtID:{
         justifyContent:'space-between',
         marginLeft: 50,
         marginBottom:10,
@@ -61,7 +61,6 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
          color: '#ffffff',
         textTransform: 'capitalize',
-       
     },
     pokemonType: {
         fontSize: 10,
@@ -69,7 +68,6 @@ export const styles = StyleSheet.create({
         color: '#ffffff',
         textTransform: 'capitalize',
         textAlign:'center',
-      
     }, 
     typesColors: {
         textAlign: 'center',
