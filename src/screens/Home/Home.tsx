@@ -13,11 +13,11 @@ export default function Home() {
     const [lista, setLista] = useState<PokemonData[]>([]);
     const [offset, setOffset] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
-    const fetchPokemons = async () => {
+    const fetchPokemons = async(currentOffset: number) => {
 
         try {
             setLoading(true);
-            const resposta = await PokeApi.get(`/pokemon?limit=20&offset=${offset}`);
+            const resposta = await PokeApi.get(`/pokemon?limit=20&offset=${currentOffset}`);
             const pokemonList = resposta.data.results;
             const detalhes = await Promise.all(
                 pokemonList.map(async (item: { name: string; url: string }) => {
@@ -45,12 +45,15 @@ export default function Home() {
     }
 
     const loadMore = async () => {
-        setOffset(offset + 20);
+        const newOffset = offset + 20;
+        setOffset(newOffset);
+        fetchPokemons(newOffset);
+
     }
 
     useEffect(() => {
-        fetchPokemons();
-    }, [offset]);
+        fetchPokemons(0);
+    },[]);
 
     return (
         <DefaultLayout>
