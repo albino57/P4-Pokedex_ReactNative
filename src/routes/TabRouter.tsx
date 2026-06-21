@@ -39,23 +39,23 @@ export default function TabRouter() {
                headerTitle: () => <LogoTitle />,
                     headerTitleAlign: 'center',
                     headerStyle: {
-                        backgroundColor: '#ec6e1a',
+                        backgroundColor: '#e75014',
                     },
                    
             tabBarActiveTintColor: '#2468B1',
             tabBarInactiveTintColor: 'gray',
              tabBarStyle:{
-                        backgroundColor:'#ec6e1a',
-                        height:80,
+                        backgroundColor:'#e75014',
+                        height:80, 
                     }
         }}
         >
             <Tab.Screen
                 name="Home"
                 component={Home}
-                options={{
+                options={{ 
                     tabBarIcon: () => <Image
-                        style={{ width: 30, height: 30, backgroundColor: '#e7e5e2', borderRadius: 25 }}
+                        style={{ width: 30, height: 30, backgroundColor: '#e7e5e2', borderRadius: 30 }}
                         source={homeIcon}
                     />
                    

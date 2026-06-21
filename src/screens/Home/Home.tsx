@@ -13,6 +13,7 @@ export default function Home() {
     const [lista, setLista] = useState<PokemonData[]>([]);
     const [offset, setOffset] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
+    
     const fetchPokemons = async(currentOffset: number) => {
 
         try {
