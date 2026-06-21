@@ -36,24 +36,29 @@ export default function TabRouter() {
     return (
         <Tab.Navigator screenOptions={{
             headerShown: true,
+               headerTitle: () => <LogoTitle />,
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#ec6e1a',
+                    },
+                   
             tabBarActiveTintColor: '#2468B1',
             tabBarInactiveTintColor: 'gray',
+             tabBarStyle:{
+                        backgroundColor:'#ec6e1a',
+                        height:80,
+                    }
         }}
         >
             <Tab.Screen
                 name="Home"
                 component={Home}
                 options={{
-                    headerTitle: () => <LogoTitle />,
-                    headerTitleAlign: 'center',
-                    headerStyle: {
-                        backgroundColor: '#ec6e1a',
-                    },
-                   
                     tabBarIcon: () => <Image
                         style={{ width: 30, height: 30, backgroundColor: '#e7e5e2', borderRadius: 25 }}
                         source={homeIcon}
                     />
+                   
                 }}
             />
 
