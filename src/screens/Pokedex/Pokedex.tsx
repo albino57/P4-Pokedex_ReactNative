@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, Alert, TextStyle } from 'react-native';
 import { usePokedex } from '../../contexts/PokedexContext';
-import DefaultLayout from '../../layouts/DefaultLayout';
 import { style } from './StylePokedex';
 import DefaultLayout from "../../layouts/DefaultLayout";
 
