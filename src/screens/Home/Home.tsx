@@ -7,13 +7,14 @@ import PokeApi from '../../services/PokeAPI/PokeAPI';
 import { PokemonCard } from "../../components/CardBase/PokemonCard";
 import { ActivityIndicator } from "react-native";
 import DefaultLayout from "../../layouts/DefaultLayout";
-import pokeball from '../../../assets/pokeball.png'
+
 
 export default function Home() {
     const [lista, setLista] = useState<PokemonData[]>([]);
     const [offset, setOffset] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
-    const fetchPokemons = async(currentOffset: number) => {
+
+    const fetchPokemons = async (currentOffset: number) => {
 
         try {
             setLoading(true);
@@ -49,24 +50,11 @@ export default function Home() {
 
     useEffect(() => {
         fetchPokemons(0);
-    },[]);
+    }, []);
 
     return (
         <DefaultLayout>
-            <View style={style.inputContainer}>
-               
-                    <TextInput style={style.input} placeholder="Buscar Pokémon">
-                    </TextInput>
-                
-                    <View style={style.buttonInputContainer}>
-                    <TouchableOpacity style={style.buttonInput}>
-                        <Image source={pokeball} style={style.buttonInput}>
-                        </Image>
-                    </TouchableOpacity>
-                </View>
-                
-
-            </View>
+          
             <View style={style.container}>
                 {loading && lista.length === 0 ? (
                     <View>

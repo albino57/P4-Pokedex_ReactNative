@@ -91,7 +91,7 @@ export const styles = StyleSheet.create({
         paddingVertical: 8,
         paddingHorizontal: 16,
         borderRadius: 20,
-        width: 85,
+        width: 95,
         height: 35,
           borderColor:'#000000ce',
           borderWidth:1.8
