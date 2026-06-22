@@ -13,6 +13,7 @@ export default function DefaultLayout({ children }: Props) {
     <ImageBackground source={background1} style={styles.container} resizeMode="cover">
       {children}
     </ImageBackground>
+    
   );
 }
 
