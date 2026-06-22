@@ -46,7 +46,7 @@ export default function TabRouter() {
             tabBarInactiveTintColor: 'gray',
              tabBarStyle:{
                         backgroundColor:'#e75014',
-                        height:80, 
+                        height:80
                     }
         }}
         >
@@ -55,7 +55,7 @@ export default function TabRouter() {
                 component={Home}
                 options={{ 
                     tabBarIcon: () => <Image
-                        style={{ width: 30, height: 30, backgroundColor: '#e7e5e2', borderRadius: 30 }}
+                        style={{ width: 30, height: 30, backgroundColor: '#e7e5e2', borderRadius: 30}}
                         source={homeIcon}
                     />
                    
