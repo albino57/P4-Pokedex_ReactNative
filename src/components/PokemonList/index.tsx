@@ -1,1 +1,1 @@
-//vazio
+import { PokemonCard } from '../CardBase/PokemonCard';
