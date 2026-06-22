@@ -60,7 +60,8 @@ export default function Home() {
         id: pokeSearch.id,
         name: pokeSearch.name,
         type: pokeSearch.types[0]?.type.name || 'unknown',
-        sprite: pokeSearch.sprites?.other?.['official-artwork']?.front_default || pokeSearch.sprites?.front_default
+        sprite: pokeSearch.sprites?.versions?.["generation-v"]?.["black-white"]?.animated?.front_default ||
+                                `https://play.pokemonshowdown.com/sprites/ani/${pokeSearch.data.name}.gif`,
     }] : lista;
 
     return (
