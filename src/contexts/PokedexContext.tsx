@@ -17,7 +17,9 @@ interface PokedexContextType {
     releasePokemon: (id: number) => Promise<void>;
     loadingBackpack: boolean;
     loadingRequests: boolean; 
-    setLoadingRequests: (loading: boolean) => void; 
+    setLoadingRequests: (loading: boolean) => void;
+    pokeSearch: any;
+    setPokeSearch: (data: any) => void;
 }
 
 const PokedexContext = createContext<PokedexContextType>({} as PokedexContextType);
@@ -26,6 +28,7 @@ export const PokedexProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [backpack, setBackpack] = useState<PokemonData[]>([]);
     const [loadingBackpack, setLoadingBackpack] = useState<boolean>(true);
     const [loadingRequests, setLoadingRequests] = useState<boolean>(false); 
+    const [pokeSearch, setPokeSearch] = useState<any>(null);
 
     useEffect(() => {
         loadBackpack();
@@ -115,7 +118,9 @@ export const PokedexProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 releasePokemon, 
                 loadingBackpack,
                 loadingRequests, 
-                setLoadingRequests 
+                setLoadingRequests,
+                pokeSearch,
+                setPokeSearch
             }}
         >
             {children}
