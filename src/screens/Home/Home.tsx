@@ -26,18 +26,14 @@ export default function Home() {
                     return {
                         id: res.data.id,
                         name: res.data.name,
-                        tipo: res.data.types[0].type.name,
-
-                        sprite: res.data.sprites?.versions?.[
-                            "generation-v"
-                        ]?.["black-white"]?.animated?.front_default ||
-
-                            `https://play.pokemonshowdown.com/sprites/ani/${res.data.name}.gif`,
-
-                    }
+                        type: res.data.types[0]?.type.name || 'unknown',
+                        sprite: res.data.sprites?.versions?.["generation-v"]?.["black-white"]?.animated?.front_default ||
+                                `https://play.pokemonshowdown.com/sprites/ani/${res.data.name}.gif`,
+                    };
                 })
             );
-            setLista([...lista, ...detalhes]);
+
+            setLista(prev => [...prev, ...detalhes]);
         } catch (error) {
             console.log("Erro ao carregar pokemons:", error);
         } finally {
