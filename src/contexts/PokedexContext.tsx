@@ -1,12 +1,14 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createPokemon, getMyPokemons, deletePokemon } from '../services/Pokemonservice';
 
 const POKEDEX_STORAGE_KEY = '@pokedex:mochila';
 
 export interface PokemonData {
     id: number;
     name: string;
-    tipo: string;
+    type: string;
+    sprite?: string;
 }
 
 interface PokedexContextType {
@@ -26,45 +28,82 @@ export const PokedexProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const [loadingRequests, setLoadingRequests] = useState<boolean>(false); 
 
     useEffect(() => {
-        async function loadStoredBackpack() {
-            try {
+        loadBackpack();
+    }, []);
+
+    const loadBackpack = async () => {
+        try {
+            setLoadingBackpack(true);
+            const apiPokemons = await getMyPokemons();
+            
+            if (apiPokemons && apiPokemons.length > 0) {
+                setBackpack(apiPokemons);
+            } else {
                 const storedData = await AsyncStorage.getItem(POKEDEX_STORAGE_KEY);
                 if (storedData) {
                     setBackpack(JSON.parse(storedData));
                 }
-            } catch (error) {
-                console.error('Erro ao carregar os dados do AsyncStorage:', error);
-            } finally {
-                setLoadingBackpack(false);
-            }
-        }
-
-        loadStoredBackpack();
-    }, []);
-
-    const catchPokemon = async (pokemon: PokemonData) => {
-        try {
-            const isAlreadyCaught = backpack.some((p) => p.id === pokemon.id);
-
-            if (!isAlreadyCaught) {
-                const newBackpack = [...backpack, pokemon];
-                setBackpack(newBackpack);
-
-                await AsyncStorage.setItem(POKEDEX_STORAGE_KEY, JSON.stringify(newBackpack));
             }
         } catch (error) {
-            console.error('Erro ao salvar pokemon capturado:', error);
+            console.error('Erro ao carregar Pokédex:', error);
+            try {
+                const storedData = await AsyncStorage.getItem(POKEDEX_STORAGE_KEY);
+                if (storedData) setBackpack(JSON.parse(storedData));
+            } catch (e) {}
+        } finally {
+            setLoadingBackpack(false);
         }
     };
 
+    const catchPokemon = async (pokemon: any) => {
+    try {
+        setLoadingRequests(true);
+
+        const tipoPokemon = pokemon.tipo || pokemon.type || '';
+
+        const isAlreadyCaught = backpack.some((p) => p.id === pokemon.id);
+        if (isAlreadyCaught) return;
+
+        const savedPokemon = await createPokemon({
+            name: pokemon.name,
+            type: tipoPokemon,
+        });
+
+        const newPokemon = {
+            id: savedPokemon.id,
+            name: savedPokemon.name,
+            type: savedPokemon.type || tipoPokemon,
+            sprite: pokemon.sprite || savedPokemon.sprite,
+        };
+
+        const newBackpack = [...backpack, newPokemon];
+        setBackpack(newBackpack);
+
+        await AsyncStorage.setItem(POKEDEX_STORAGE_KEY, JSON.stringify(newBackpack));
+    } catch (error) {
+        console.error('Erro ao capturar pokemon:', error);
+    } finally {
+        setLoadingRequests(false);
+    }
+};
+
     const releasePokemon = async (id: number) => {
         try {
+            setLoadingRequests(true);
+            
+            await deletePokemon(id);
+
             const newBackpack = backpack.filter((p) => p.id !== id);
             setBackpack(newBackpack);
 
             await AsyncStorage.setItem(POKEDEX_STORAGE_KEY, JSON.stringify(newBackpack));
         } catch (error) {
-            console.error('Erro ao remover pokemon do AsyncStorage:', error);
+            console.error('Erro ao soltar pokemon:', error);
+            const newBackpack = backpack.filter((p) => p.id !== id);
+            setBackpack(newBackpack);
+            await AsyncStorage.setItem(POKEDEX_STORAGE_KEY, JSON.stringify(newBackpack));
+        } finally {
+            setLoadingRequests(false);
         }
     };
 

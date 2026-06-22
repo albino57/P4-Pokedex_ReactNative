@@ -10,7 +10,7 @@ import { typesBackground } from '../../utils/typesBackground';
 export interface PokemonData {
     id: number;
     name: string;
-    tipo: string;
+    type: string;
     sprite?: string,
 }
 
@@ -36,7 +36,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
         setStatus('capturando');
 
         setTimeout(() => {
-            catchPokemon(pokemon);
+            catchPokemon({ ...pokemon, type: pokemon.type } as any);
             setStatus('capturado');
         }, 1500);
 
@@ -45,7 +45,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
         }, 3000);
     }
 
-    const backgroundType = typesBackground[pokemon.tipo as keyof typeof typesBackground] || typesBackground.normal;
+    const backgroundType = typesBackground[pokemon.type as keyof typeof typesBackground] || typesBackground.normal;
 
     return (
         <ImageBackground
@@ -72,13 +72,13 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
                     
                 </View>
                 <View style={styles.tipoContainer}>
-                    <Text style={styles.txtTipo}>
-                        Tipo:
+                    <Text>
+                        type:
                     </Text>
                     <View style={[styles.typesColors, {
-                        backgroundColor: typeColors[pokemon.tipo as keyof typeof typeColors]
+                        backgroundColor: typeColors[pokemon.type as keyof typeof typeColors]
                     }]}>
-                        <Text style={styles.pokemonType}>{pokemon.tipo}</Text>
+                        <Text style={styles.pokemonType}>{pokemon.type}</Text>
                     </View>
                 </View>
 
