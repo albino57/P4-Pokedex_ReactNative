@@ -4,6 +4,15 @@ Projeto final da disciplina de React Native da Residência TIC/Software do Serra
 
 Aplicação mobile desenvolvida em React Native com Expo, criando uma Pokédex para consulta e visualização de informações dos Pokémons.
 
+## Integrantes
+- Breno França
+- Bruno Freitas
+- Bruno Vitor
+- Marcos Paulo
+- Mário José
+- Paulo César
+- Rafael Albino
+
 ## 🚀 Tecnologias utilizadas
 
 - React Native
