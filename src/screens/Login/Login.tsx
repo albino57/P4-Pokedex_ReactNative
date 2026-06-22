@@ -1,10 +1,11 @@
 //src/screens/Login/Login.tsx
 import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, Image,ImageBackground } from 'react-native'
 import { style } from './StyleLogin';
 import { AuthContext } from '../../contexts/AuthContext';
 import DefaultLayout from '../../layouts/DefaultLayout';
 import logoPoke from '../../../assets/logoPoke.png'
+import backgroundLogin from '../../../assets/backgroundLogin.jpg'
 
 
 export default function Login() {
@@ -12,8 +13,10 @@ export default function Login() {
 
     return (
         <DefaultLayout>
-            <View style={style.container}>
+
                 <View style={style.inputBlock}>
+                <ImageBackground source={backgroundLogin} style={style.containerBack} resizeMode="cover">
+                    <View style={style.container}>
 
                     <View style={style.loginContainer}>
                         <View style={style.imgContainer}>
@@ -42,7 +45,9 @@ export default function Login() {
 
                     </View>
                 </View>
+                </ImageBackground>
             </View>
+           
         </DefaultLayout>
     )
 }

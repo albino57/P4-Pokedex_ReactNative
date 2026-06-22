@@ -9,8 +9,7 @@ export const style = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 30,
 
-    },
-
+    },containerBack:{},
     title: {
         fontSize: 20,
         fontWeight: 'bold',
